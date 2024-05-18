@@ -1,0 +1,34 @@
+<h1>Dashboard</h1>
+<hr>
+
+<button (click)="onLogout()">Cerrar Sesión</button>
+
+<button mat-raised-button color="primary" (click)="openModal()">Crear Estudiante</button>
+
+<table mat-table [dataSource]="students" class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let student"> {{student.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+    <td mat-cell *matCellDef="let student"> {{student.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="age">
+    <th mat-header-cell *matHeaderCellDef> Edad </th>
+    <td mat-cell *matCellDef="let student"> {{student.age}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef> Acciones </th>
+    <td mat-cell *matCellDef="let student">
+      <button mat-button (click)="openModal(student)">Editar</button>
+      <button mat-button (click)="deleteStudent(student.id)">Eliminar</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

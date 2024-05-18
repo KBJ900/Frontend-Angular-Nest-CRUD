@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>{{ data.student ? 'Editar Estudiante' : 'Crear Estudiante' }}</h2>
+<form [formGroup]="studentForm" (ngSubmit)="save()">
+  <mat-form-field>
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="name">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Edad</mat-label>
+    <input matInput type="number" formControlName="age">
+  </mat-form-field>
+  <div mat-dialog-actions>
+    <button mat-button type="submit" [disabled]="studentForm.invalid">Guardar</button>
+    <button mat-button (click)="dialogRef.close()">Cancelar</button>
+  </div>
+</form>
